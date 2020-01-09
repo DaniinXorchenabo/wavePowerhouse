@@ -1,7 +1,9 @@
 import plotly
 import plotly.graph_objs as go
 import numpy as np
-h_vk = [1157,1137,1126, 1114,1104, 1089,1075,1056,1047, 1030, 1013, 997,979, 968,946, 927,909, 894,879,865,850,830,821,805,789, 776, 766,746,733,722,703, 686,  670,657,635,621,596, 573,548, 516, 488,445,398,337,264, 152,0]#a
+
+
+h_vk = [1157,1137,1126, 1114,1104, 1089,1075,1056,1047, 1030, 1013, 997,979, 968,946, 927,909, 894,879,865,850,830,821,805,789, 776, 766,746,733,722,703, 686, 670,657,635,621,596, 573,548, 516, 488,445,398,337,264, 152,0]#a
 h_vk_overWother = [1157,1135,1127,1110,1100,1087,1075,1060,1051,1041,1029,1020,1009, 999, 995,994,984,978,975,974,973,973,978,980,985,994,1005,1016,1023,1036,1050,1066,1084,1104,1125,1157,1172,1193,1221,1253,1285,1317,1347,1391,1436,1475,1475] #a1
 h_underVk = [h_vk_overWother[i] - h_vk[i] for i in range(len(h_vk))]
 bmax = 100
@@ -9,8 +11,8 @@ bmin = 10
 h_vk_overWother = list(map(lambda i: i/10, h_vk_overWother))
 w_vk = [round((((len(h_vk) - i)/len(h_vk))*(bmax-bmin) + 10)*10, 1) for i in range(len(h_vk))]
 integrVolue = lambda mas, ind, wei: (mas[ind+1] - mas[ind])/5*(wei - ind*5)+ mas[ind]
-
-
+waveZeroLevel = 0
+# S = -cos(x2) - (-cos(x1)) #площадь
 #----=-=-=-
 
 
@@ -40,9 +42,9 @@ def getVHW(deepWave_mm, what='V'):
 print(h_vk)
 print(getVHW(12.456))
 
-a1 = [i + 10 for i in h_vk_overWother]
-a1 = [1500-i for i in a1]
-a = [1500-i for i in h_vk]
+#a1 = [i + 10 for i in h_vk_overWother]
+#a1 = [1500-i for i in a1]
+#a = [1500-i for i in h_vk]
 
 b = [round(((len(a) - i)/len(a))*(bmax-bmin) + 10, 1) for i in range(len(a))]
 print(len(b), len(a), len(a1))
