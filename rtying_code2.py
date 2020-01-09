@@ -15,7 +15,6 @@ integrVolue = lambda mas, ind, wei: (mas[ind+1] - mas[ind])/5*(wei - ind*5)+ mas
 
 
 print('hellow_comit')
-print('test2')
 
 
 
