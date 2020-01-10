@@ -32,10 +32,12 @@ def getVHW(deepWave_mm, what='S'): # не работает как надоы
             return integrVolue(w_vk,ind1,deepWave_mm)
         elif what == 'wh' or what == 'hw':
             return integrVolue(h_vk,ind1,deepWave_mm), integrVolue(w_vk,ind1,deepWave_mm)
+        elif what == "V":
+            return sum(list([h_vk[i] * w_vk[i] * 0.005 for i in range(len(h_vk))]))
+        elif what == "n": # количество моль в полном объеме
+            return (sum(list([h_vk[i] * w_vk[i] * 0.005 for i in range(len(h_vk))])) / 22.4) * 8.31
         else:
             return integrVolue(h_vk,ind1,deepWave_mm)*integrVolue(w_vk,ind1,deepWave_mm)
-        #setup_deep_h = integrVolue(h_vk,ind1,deepWave_mm)
-        #setup_deep_w = integrVolue(w_vk,ind1,deepWave_mm)
     except Exception as e:
         print('-=-=-=-=-=-',e)
         return 'error in getVHW ' + str(e)
