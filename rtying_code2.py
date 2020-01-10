@@ -28,13 +28,13 @@ L = 10  # длинна волны
 w = 2*pi/T
 listW = [w]
 print(w)
-t = np.arange(1000)/200 #+ pi/2 #629/200
+x = np.arange(1000)/200 #+ pi/2 #629/200
 print()
-h = np.around(A*np.sin(w*t -pi/2), decimals=3)
+h = np.around(A*np.sin(w*x -pi/2), decimals=3)
 #print(h)
 #print(sin(w*1.645*pi), 1.645*pi)
-F = lambda t, a=listA[0], w=listW[0],zerLev=zerLev[0] : -a*cos(w*t-pi/2)/w 
-S_func = lambda i,zerLev=zerLev[0]: F(t[i+1])-F(t[i]) - zerLev*(t[i+1]-t[i])
+F = lambda x, a=listA[0], w=listW[0],zerLev=zerLev[0] : -a*cos(w*x-pi/2)/w 
+S_func = lambda i,zerLev=zerLev[0]: F(x[i+1])-F(x[i]) - zerLev*(x[i+1]-x[i])
 S = np.around(list(map(S_func, range(len(h)-1))), decimals=4)
 print(h)
 print(sum(S))
