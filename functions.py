@@ -19,7 +19,7 @@ def V_func():
 
 integrVolue = lambda mas, ind, wei: (mas[ind + 1] - mas[ind]) / 5 * (wei - ind * 5) + mas[ind]
 F = lambda x, a=listA[0], w=listW[0],zerLev=zerLev[0] : -a*cos(w*x-pi/2)/w
-S_func = lambda i,zerLev=zerLev[0]: F(x[i+1])-F(x[i]) - zerLev*(x[i+1]-x[i])
+S_func = lambda i, arrX, zerLev=zerLev[0]: F(arrX[i+1]) - F(arrX[i]) - zerLev*(arrX[i+1]-arrX[i])
 
 def getVHW(deepWave_mm, what='S'): # не работает как надоы
     try:
