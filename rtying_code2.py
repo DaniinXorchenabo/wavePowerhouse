@@ -16,24 +16,30 @@ bmin = 10
 #h_vk_overWother = list(map(lambda i: i/10, h_vk_overWother))
 w_vk = [round((((len(h_vk) - i)/len(h_vk))*(bmax-bmin) + 10)/1000, 4) for i in range(len(h_vk))]
 integrVolue = lambda mas, ind, wei: (mas[ind+1] - mas[ind])/5*(wei - ind*5)+ mas[ind]
-waveZeroLevel = 0.1
+
 #print(w_vk)
 
-
-A = 0.5
+waveZeroLevel = -1
+zerLev = [waveZeroLevel]
+A = 1#0.5
+listA = [A]
 T = 20  # = L/u (длинна на скорость распростронения)
 L = 10  # длинна волны
-w = 2*pi/T
+w = 1#2*pi/T
+listW = [w]
 print(w)
-t = np.arange(1000)/25
-
-h = np.around(A*np.sin(w*t), decimals=4)
+t = np.arange(629)/200 + pi/2 #629/200
+print()
+h = np.around(A*np.sin(w*t -pi/2), decimals=3)
 #print(h)
-print(sin(w*1.645*pi), 1.645*pi)
-S = np.around(list(map(lambda i: -cos(h[i+1]) + cos(h[i]), range(len(h)-1))), decimals=4)
-print(S)
+#print(sin(w*1.645*pi), 1.645*pi)
+F = lambda t, a=listA[0], w=listW[0],zerLev=zerLev[0] : -a*cos(w*t-pi/2)/w 
+S_func = lambda i,zerLev=zerLev[0]: F(t[i+1])-F(t[i]) - zerLev*(t[i+1]-t[i])
+S = np.around(list(map(S_func, range(len(h)-1))), decimals=4)
+print(h)
+print(sum(S))
 #S = -cos(x2) - (-cos(x1)) #площадь
-#----=-=-=-
+#----s=-=-=-
 
 
 #print('hellow_comit')
