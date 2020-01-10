@@ -19,16 +19,16 @@ integrVolue = lambda mas, ind, wei: (mas[ind+1] - mas[ind])/5*(wei - ind*5)+ mas
 
 #print(w_vk)
 
-waveZeroLevel = -1
+waveZeroLevel = -0.5
 zerLev = [waveZeroLevel]
-A = 1#0.5
+A = 0.5
 listA = [A]
 T = 20  # = L/u (длинна на скорость распростронения)
 L = 10  # длинна волны
-w = 1#2*pi/T
+w = 2*pi/T
 listW = [w]
 print(w)
-t = np.arange(629)/200 + pi/2 #629/200
+t = np.arange(1000)/200 #+ pi/2 #629/200
 print()
 h = np.around(A*np.sin(w*t -pi/2), decimals=3)
 #print(h)
